@@ -8,4 +8,4 @@
 
 username1, Huyen123, Alice, 1991, 11, 30
 example2, dannypwns08, Bob, 1991, 11, 30
-example_username, asldfkjasldfkj, Claire, 1991, 11, 30
+example_username, z1x2c3v4b5n6m7, Claire, 1991, 11, 30

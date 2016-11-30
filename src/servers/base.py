@@ -38,17 +38,17 @@ class BaseServer:
                 if len(line_format) == 0:
                     # if no formatting line has been found before any real data,
                     # throw an error
-                    print "You must specific a format line at the top of your \
-                           user db file! expects the format:\n \
-                           # FORMAT: username, password, thing1, thing2"
+                    print "You must specify a format line at the top of your",
+                    print "user db file! expects the format:"
+                    print "# FORMAT: username, password, thing1, thing2"
                     raise AttributeError
                     break
 
                 if not ("username" in line_format and "password" in line_format):
                     # if both "username" and "password" are not provided in the
                     # formatting lines, throw an error. these are required
-                    print "You must provide a username and password for each user\n \
-                           # FORMAT: username, password, thing1, thing2"
+                    print "You must provide a username and password for each",
+                    print "user\n# FORMAT: username, password, thing1, thing2"
                     raise AttributeError
                     break
 
