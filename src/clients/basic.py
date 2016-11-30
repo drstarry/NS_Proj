@@ -3,11 +3,12 @@
 from datetime import datetime
 from socket import socket, AF_INET, SOCK_STREAM
 
+from base import BaseClient
 from utils import sockets
 
 
-class Client:
-    def client(self, sckt, bruteforce_file):
+class BasicClient(BaseClient):
+    def Client(self, sckt, bruteforce_file):
         """
         sckt = socket: the socket used to communicate
         bruteforce_file = string: name of the file that has password guesses
@@ -43,20 +44,3 @@ class Client:
 
         print "Took %d guesses and %d microseconds." \
             % (attempts, time_taken.microseconds)
-
-
-    def start(self, serverAddress, serverPort, bruteforce_file):
-        """
-        serverHost = string: localhost/ip address/url for server
-        serverPort = int: port number to connect for server
-        bruteforce_file = string: name of the file that has password guesses
-        """
-        serverSckt = socket(AF_INET, SOCK_STREAM)
-        serverSckt.connect((serverAddress, serverPort))
-        print "Client: Connected to Server at %s:%d" \
-            % (serverAddress, serverPort)
-
-        self.client(serverSckt, bruteforce_file)
-
-        serverSckt.shutdown(1)  # send close signal to server socket
-        serverSckt.close()  # close connection

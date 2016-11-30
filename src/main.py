@@ -1,10 +1,9 @@
 #!/usr/bin/python2.7
 
-import time
 import sys
 
-from servers import basic as server_basic
-from clients import basic as client_basic
+from servers.basic import BasicServer
+from clients.basic import BasicClient
 
 
 # main "method" that kicks off various routines
@@ -22,14 +21,14 @@ if __name__ == "__main__":
     actor = None
     if actor_str == "server":
         if actor_type == "basic":
-            actor = server_basic.Server()
+            actor = BasicServer()
 
     elif actor_str == "client":
         if actor_type == "basic":
-            actor = client_basic.Client()
+            actor = BasicClient()
 
     if not actor:
         print "Bad arguments given"
         exit(1)
 
-    actor.start("localhost", port, data_file_name)
+    actor.Start("localhost", port, data_file_name)

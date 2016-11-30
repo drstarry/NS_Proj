@@ -2,7 +2,7 @@
 
 PORT=8000
 PASSWORD_FILE='data/user_password_pairs.txt'
-BRUTEFORCE_FILE='data/password_dictionary.txt'
+BRUTEFORCE_FILE='data/small_password_dictionary.txt'
 
 if [[ $# -eq 1 ]]; then
   # optional argument
