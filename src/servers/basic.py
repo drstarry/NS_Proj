@@ -28,7 +28,7 @@ class BasicServer(BaseServer):
             received_password = data[2]
 
             if received_username in users and \
-               users[received_username] == received_password:
+               users[received_username]["password"] == received_password:
                 sckt.sendData(password.SUCCESS_AUTH)
             else:
                 sckt.sendData(password.FAILURE_AUTH)

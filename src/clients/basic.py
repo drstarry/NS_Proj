@@ -26,8 +26,8 @@ class BasicClient(BaseClient):
             attempts = attempts + 1
 
             # [source ip address, username, password]
-            data = ["10.0.1.3", "example_username", password_guess]
-            sckt.sendData(data)
+            guess_data = ["10.0.1.3", "example_username", password_guess]
+            sckt.sendData(guess_data)
             data = sckt.receiveRequest()
             if data == password.SUCCESS_AUTH:
                 success = True

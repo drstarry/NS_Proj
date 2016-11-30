@@ -6,6 +6,6 @@
 
 ## FORMAT: username, password, name, birthdate-year, birthdate-month, birthdate-day
 
-username1, thisismysecretpassword, Alice, 1991, 11, 30
-example2,password, Bob, 1991, 11, 30
-example_username,secretthing, Claire, 1991, 11, 30
+username1, Huyen123, Alice, 1991, 11, 30
+example2, dannypwns08, Bob, 1991, 11, 30
+example_username, asldfkjasldfkj, Claire, 1991, 11, 30
