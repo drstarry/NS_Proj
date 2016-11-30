@@ -4,6 +4,9 @@ Final project for CS 6490 at the University of Utah
 ## Requirements
 * Python 2.7
 
+## Credits
+* [SecLists](https://github.com/danielmiessler/SecLists) for password files.
+
 ## Scripts
 
 To run the full Client/Server password cracking socket thing, just run:
