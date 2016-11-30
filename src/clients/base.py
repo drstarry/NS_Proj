@@ -6,6 +6,8 @@ from socket import socket, AF_INET, SOCK_STREAM
 class BaseClient:
     def Client(self, sckt, filename):
         """needs to be implemented by derived class
+        must return:
+        <boolean success>, <datetime time_taken>, <int attemps>
         """
         raise NotImplementedError
 

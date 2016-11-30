@@ -13,11 +13,7 @@ class BasicServer(BaseServer):
         sckt = socket: the socket used to communicate
         password_file = string: file that contains username/password pairs
         """
-        users = {}
-        with open(password_file, "r") as f:
-            for line in f.readlines():
-                parts = line.strip().split(",")
-                users.update({parts[0]: parts[1]})  # username, password
+        users = self.BuildDB(password_file)
 
         while True:
             # receive data from connected socket

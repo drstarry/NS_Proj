@@ -1,0 +1,11 @@
+# This is like a csv format file. the header line must start with "## FORMAT:"
+# Any blank lines or lines that start with "#" (except for the format line) are
+# ignored
+# "username" and "password" are required in the format line
+
+
+## FORMAT: username, password, name, birthdate-year, birthdate-month, birthdate-day
+
+username1, thisismysecretpassword, Alice, 1991, 11, 30
+example2,password, Bob, 1991, 11, 30
+example_username,secretthing, Claire, 1991, 11, 30

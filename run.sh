@@ -1,15 +1,18 @@
 #!/bin/sh
 
 PORT=8000
-PASSWORD_FILE='data/user_password_pairs.txt'
-BRUTEFORCE_FILE='data/small_password_dictionary.txt'
+ACTOR_TYPE='basic'
+SERVER_USER_DB='data/server_user_db.txt'
+CLIENT_BRUTEFORCE_FILE='data/small_password_dictionary.txt'
 
 if [[ $# -eq 1 ]]; then
-  # optional argument
   PORT=$1
+elif [[ $# -eq 1 ]]; then
+  PORT=$1
+  ACTOR_TYPE=$2
 fi
 
 # start server in the background
-python src/main.py 'server' 'basic' $PORT $PASSWORD_FILE &
+python src/main.py 'server' $ACTOR_TYPE $PORT $SERVER_USER_DB &
 sleep 1
-python src/main.py 'client' 'basic' $PORT $BRUTEFORCE_FILE
+python src/main.py 'client' $ACTOR_TYPE $PORT $CLIENT_BRUTEFORCE_FILE
