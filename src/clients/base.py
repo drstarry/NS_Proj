@@ -20,7 +20,17 @@ class BaseClient:
         print "Client: Connected to Server at %s:%d" \
             % (serverAddress, serverPort)
 
-        self.Client(serverSckt, bruteforce_file)
+        success, time_taken, attempts = self.Client(serverSckt, bruteforce_file)
+        # used to close socket when client is done
+        serverSckt.sendCloseSignal()
+
+        if success:
+            print "Success! Cracked the password and got in."
+        else:
+            print "Failure! Tried to get in but couldn't."
+
+        print "Took %d guesses and %d microseconds." \
+            % (attempts, time_taken.microseconds)
 
         serverSckt.shutdown(1)  # send close signal to server socket
         serverSckt.close()  # close connection

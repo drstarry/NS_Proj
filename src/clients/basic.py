@@ -4,6 +4,7 @@ from datetime import datetime
 from socket import socket, AF_INET, SOCK_STREAM
 
 from base import BaseClient
+from utils import password
 from utils import sockets
 
 
@@ -28,19 +29,9 @@ class BasicClient(BaseClient):
             data = ["10.0.1.3", "example_username", password_guess]
             sckt.sendData(data)
             data = sckt.receiveRequest()
-            if data == "SUCCESS":
+            if data == password.SUCCESS_AUTH:
                 success = True
                 break  # found a successful password!
 
-        end_time = datetime.now()
-        time_taken = end_time - start_time
-
-        if success:
-            print "Success! Cracked the password and got in."
-        else:
-            # used to close socket when client is done
-            sckt.sendData("CLOSE")
-            print "Failure! Tried to get in but couldn't."
-
-        print "Took %d guesses and %d microseconds." \
-            % (attempts, time_taken.microseconds)
+        time_taken = datetime.now() - start_time
+        return success, time_taken, attempts

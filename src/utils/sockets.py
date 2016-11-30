@@ -6,6 +6,11 @@ from socket import socket
 import json
 
 
+CLOSE_SIGNAL = "<--CLOSE-->"
+
+def sendCloseSignal(self):
+    self.sendData(CLOSE_SIGNAL)
+
 def sendData(self, msg):
     """sends a message over a socket
     """
@@ -52,3 +57,4 @@ def readLine(sckt):
 # make each of these custom functions available to the socket class
 socket.receiveRequest = MethodType(receiveRequest, None, socket)
 socket.sendData = MethodType(sendData, None, socket)
+socket.sendCloseSignal = MethodType(sendCloseSignal, None, socket)

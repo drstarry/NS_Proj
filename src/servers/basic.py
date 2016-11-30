@@ -3,6 +3,7 @@
 from socket import socket, AF_INET, SOCK_STREAM
 
 from base import BaseServer
+from utils import password
 from utils import sockets
 
 
@@ -22,16 +23,16 @@ class BasicServer(BaseServer):
             # receive data from connected socket
             # data is in the format [source_ip, username, password]
             data = sckt.receiveRequest()
-            if data == "CLOSE":
+            if data == sockets.CLOSE_SIGNAL:
                 # used to close socket when client is done
                 break
 
             source_ip = data[0]
-            username = data[1]
-            password = data[2]
+            received_username = data[1]
+            received_password = data[2]
 
-            if username in users and users[username] == password:
-                sckt.sendData("SUCCESS!")
-                break
+            if received_username in users and \
+               users[received_username] == received_password:
+                sckt.sendData(password.SUCCESS_AUTH)
             else:
-                sckt.sendData("FAILURE!")
+                sckt.sendData(password.FAILURE_AUTH)
