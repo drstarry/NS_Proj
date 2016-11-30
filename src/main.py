@@ -4,6 +4,8 @@ import sys
 
 from servers.basic import BasicServer
 from clients.basic import BasicClient
+from servers.hashed_meta import HashedMetaServer
+from clients.hashed_meta import HashedMetaClient
 
 
 # main "method" that kicks off various routines
@@ -21,11 +23,19 @@ if __name__ == "__main__":
     actor = None
     if actor_str == "server":
         if actor_type == "basic":
+            print "Basic Server",
             actor = BasicServer()
+        if actor_type == "hashed_meta":
+            print "Hashed Meta Server",
+            actor = HashedMetaServer()
 
     elif actor_str == "client":
         if actor_type == "basic":
+            print "Basic Client",
             actor = BasicClient()
+        if actor_type == "hashed_meta":
+            print "Hashed Meta Client",
+            actor = HashedMetaClient()
 
     if not actor:
         print "Bad arguments given"

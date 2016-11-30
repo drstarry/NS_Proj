@@ -7,7 +7,7 @@ CLIENT_BRUTEFORCE_FILE='data/small_password_dictionary.txt'
 
 if [[ $# -eq 1 ]]; then
   PORT=$1
-elif [[ $# -eq 1 ]]; then
+elif [[ $# -eq 2 ]]; then
   PORT=$1
   ACTOR_TYPE=$2
 fi
