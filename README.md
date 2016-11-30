@@ -15,6 +15,9 @@ To run the full Client/Server password cracking socket thing, just run:
 ./run.sh
 ```
 
+## Dev Notes
+* [Unused Possibly Useful Passord Dictionary](https://crackstation.net/buy-crackstation-wordlist-password-cracking-dictionary.htm)
+
 ## Authors
 * [Rui Dai](https://github.com/drstarry)
 * [Sam Olds](https://github.com/samolds)

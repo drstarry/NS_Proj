@@ -3,11 +3,10 @@
 from datetime import datetime
 from socket import socket, AF_INET, SOCK_STREAM
 
-import utils
+from utils import sockets
 
 
 class Client:
-
     def client(self, sckt, bruteforce_file):
         """
         sckt = socket: the socket used to communicate
@@ -36,13 +35,15 @@ class Client:
         time_taken = end_time - start_time
 
         if success:
-            print "Success!"
+            print "Success! Cracked the password and got in."
         else:
             # used to close socket when client is done
             sckt.sendData("CLOSE")
-            print "Failure!"
+            print "Failure! Tried to get in but couldn't."
+
         print "Took %d guesses and %d microseconds." \
             % (attempts, time_taken.microseconds)
+
 
     def start(self, serverAddress, serverPort, bruteforce_file):
         """
@@ -58,4 +59,4 @@ class Client:
         self.client(serverSckt, bruteforce_file)
 
         serverSckt.shutdown(1)  # send close signal to server socket
-        serverSckt.close()         # close connection
+        serverSckt.close()  # close connection

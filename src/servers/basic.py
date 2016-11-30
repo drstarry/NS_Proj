@@ -2,11 +2,10 @@
 
 from socket import socket, AF_INET, SOCK_STREAM
 
-import utils
+from utils import sockets
 
 
 class Server:
-
     def host(self, sckt, password_file):
         """
         sckt = socket: the socket used to communicate
@@ -35,6 +34,7 @@ class Server:
                 break
             else:
                 sckt.sendData("FAILURE!")
+
 
     def start(self, serverAddress, serverPort, password_file):
         """
