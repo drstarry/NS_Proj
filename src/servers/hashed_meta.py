@@ -1,11 +1,13 @@
 #!/usr/bin/python2.7
 
+from hashlib import sha1
+
 from base import BaseServer
 from utils import password
 from utils import sockets
 
 
-class BasicServer(BaseServer):
+class HashedMetaServer(BaseServer):
     def Host(self, sckt, password_file):
         """
         sckt = socket: the socket used to communicate
@@ -25,8 +27,19 @@ class BasicServer(BaseServer):
             received_username = data[1]
             received_password = data[2]
 
-            if received_username in users and \
-               users[received_username]["password"] == received_password:
+            if received_username not in users:
+                sckt.sendData(password.FAILURE_AUTH)
+                continue
+
+            user = users[received_username]
+            actual_password = user["password"]
+            birthdate_keys = filter(lambda el: "birthdate" in el, user.keys())
+            birthdate_meta_data = [user[k] for k in birthdate_keys]
+            composed_password_data = actual_password + "," + \
+                                     ",".join(birthdate_meta_data)
+            actual_password = sha1(composed_password_data).hexdigest()
+
+            if actual_password == received_password:
                 sckt.sendData(password.SUCCESS_AUTH)
             else:
                 sckt.sendData(password.FAILURE_AUTH)

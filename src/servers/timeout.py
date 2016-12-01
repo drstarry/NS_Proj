@@ -1,11 +1,13 @@
 #!/usr/bin/python2.7
 
+import time
+
 from base import BaseServer
 from utils import password
 from utils import sockets
 
 
-class BasicServer(BaseServer):
+class TimeoutServer(BaseServer):
     def Host(self, sckt, password_file):
         """
         sckt = socket: the socket used to communicate
@@ -24,6 +26,8 @@ class BasicServer(BaseServer):
             source_ip = data[0]
             received_username = data[1]
             received_password = data[2]
+
+            #time.sleep(1)
 
             if received_username in users and \
                users[received_username]["password"] == received_password:

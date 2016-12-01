@@ -7,7 +7,7 @@ from utils import password
 from utils import sockets
 
 
-class BasicClient(BaseClient):
+class TimeoutClient(BaseClient):
     def Client(self, sckt, bruteforce_file):
         """
         sckt = socket: the socket used to communicate
@@ -25,7 +25,7 @@ class BasicClient(BaseClient):
             attempts = attempts + 1
 
             # [source ip address, username, password]
-            guess_data = ["10.0.1.3", "example_username", password_guess]
+            guess_data = ["10.0.1.3", "sbarnesam", password_guess]
             sckt.sendData(guess_data)
             data = sckt.receiveRequest()
             if data == password.SUCCESS_AUTH:

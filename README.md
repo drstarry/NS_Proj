@@ -18,6 +18,7 @@ To run the full Client/Server password cracking socket thing, just run:
 ## Dev Notes
 * [Project outline](https://github.com/drstarry/NS_Proj/wiki/Project-Outline)
 * [Unused Possibly Useful Passord Dictionary](https://crackstation.net/buy-crackstation-wordlist-password-cracking-dictionary.htm)
+* [Mock Data (username) Generator](https://www.mockaroo.com)
 
 ## Authors
 * [Rui Dai](https://github.com/drstarry)

@@ -3,7 +3,9 @@
 import itertools
 
 # a pool of all characters allowed in a password
-pool = '1234567890!@#$%^&*()_-+=~qwertyuiop{[]}asdfghjkl:;"zxcvbnm,.`\/|<>?''QWERTYUIOPLKJHGFDSAZXCVBNM'
+POOL = '1234567890!@#$%^&*()_-+=~qwertyuiop{[]}asdfghjkl:;"zxcvbnm,.`\/|<>?''QWERTYUIOPLKJHGFDSAZXCVBNM'
+SUCCESS_AUTH = "success"
+FAILURE_AUTH = "failure"
 
 # number = '1234567890'
 # special_chr = '!@#$%^&*()_-+`=~{[]}:;",./<>?\|''
@@ -44,7 +46,7 @@ def bruteforce(pwd, cur_len, min_dig, max_dig):
         return
     if cur_len >= min_dig:
         yield pwd
-    for x in pool:
+    for x in POOL:
         for y in bruteforce(pwd+x, cur_len+1, min_dig, max_dig):
             yield y
 

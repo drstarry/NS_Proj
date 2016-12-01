@@ -1,13 +1,14 @@
 #!/usr/bin/python2.7
 
 from datetime import datetime
+from hashlib import sha1
 
 from base import BaseClient
 from utils import password
 from utils import sockets
 
 
-class BasicClient(BaseClient):
+class HashedMetaClient(BaseClient):
     def Client(self, sckt, bruteforce_file):
         """
         sckt = socket: the socket used to communicate
@@ -24,9 +25,12 @@ class BasicClient(BaseClient):
         for password_guess in password_guesses:
             attempts = attempts + 1
 
+            password_guess = sha1(password_guess).hexdigest()
+
             # [source ip address, username, password]
             guess_data = ["10.0.1.3", "example_username", password_guess]
             sckt.sendData(guess_data)
+
             data = sckt.receiveRequest()
             if data == password.SUCCESS_AUTH:
                 success = True
