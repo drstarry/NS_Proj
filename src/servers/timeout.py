@@ -14,6 +14,7 @@ class TimeoutServer(BaseServer):
         password_file = string: file that contains username/password pairs
         """
         users = self.BuildDB(password_file)
+        attempts = {}
 
         while True:
             # receive data from connected socket
@@ -27,7 +28,18 @@ class TimeoutServer(BaseServer):
             received_username = data[1]
             received_password = data[2]
 
-            #time.sleep(1)
+            # exponentially growing delay depending on the number of attempts
+            # to access an account
+            # delay = 0.01 * (2 ^ number attempts) seconds
+            delay_factor = 0
+            if received_username in attempts:
+                attempts[received_username] += 1
+                delay_factor = attempts[received_username] - 1
+            else:
+                attempts.update({received_username: 1})
+
+            if delay_factor > 0:
+                time.sleep(0.01 * (2 ** delay_factor))  # sleep in seconds
 
             if received_username in users and \
                users[received_username]["password"] == received_password:
