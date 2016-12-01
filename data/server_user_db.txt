@@ -5690,7 +5690,7 @@ lscotthk,1996-02-19,Lisa Scott,132.105.126.206,rokokgratis1
 ecolemanou,1967-07-26,Eric Coleman,233.195.117.102,inejul
 mevans6g,2016-09-14,Matthew Evans,74.189.176.30,als33176
 dbradleyf6,1995-04-28,Douglas Bradley,178.69.98.212,call0405
-sfisherhi,1960-06-14,Sara Fisher,42.56.117.225,abc123,./
+sfisherhi,1960-06-14,Sara Fisher,42.56.117.225,abc123
 jwatsonm5,1957-02-22,Janice Watson,221.153.183.111,niggah2
 gcarpenterfk,1974-03-09,Gregory Carpenter,196.228.38.97,brandy27
 rwilliamson93,2004-09-10,Robin Williamson,247.105.88.191,578446thu

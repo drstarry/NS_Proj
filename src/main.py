@@ -8,6 +8,8 @@ from servers.hashed_meta import HashedMetaServer
 from clients.hashed_meta import HashedMetaClient
 from servers.timeout import TimeoutServer
 from clients.timeout import TimeoutClient
+from servers.lockout import LockoutServer
+from clients.lockout import LockoutClient
 
 
 # main "method" that kicks off various routines
@@ -33,6 +35,9 @@ if __name__ == "__main__":
         elif actor_type == "timeout":
             print "Timeout Server",
             actor = TimeoutServer()
+        elif actor_type == "lockout":
+            print "Lockout Server",
+            actor = LockoutServer()
 
     elif actor_str == "client":
         if actor_type == "basic":
@@ -44,6 +49,9 @@ if __name__ == "__main__":
         elif actor_type == "timeout":
             print "Timeout Client",
             actor = TimeoutClient()
+        elif actor_type == "lockout":
+            print "Lockout Client",
+            actor = LockoutClient()
 
     if not actor:
         print "Bad arguments given"

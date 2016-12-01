@@ -3,7 +3,7 @@
 PORT=8000
 ACTOR_TYPE='basic'
 SERVER_USER_DB='data/server_user_db.txt'
-CLIENT_BRUTEFORCE_FILE='data/small_password_dictionary.txt'
+CLIENT_BRUTEFORCE_FILE='data/full_password_dictionary.txt'
 
 if [[ $# -eq 1 ]]; then
   PORT=$1

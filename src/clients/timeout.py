@@ -23,7 +23,8 @@ class TimeoutClient(BaseClient):
                 attempts = attempts + 1
 
                 # [source ip address, username, password]
-                guess_data = ["10.0.1.3", "sbarnesam", password_guess]
+                # sfisherhi's password is #5 in the password dictionary file
+                guess_data = ["10.0.1.3", "sfisherhi", password_guess]
                 sckt.sendData(guess_data)
                 data = sckt.receiveRequest()
                 if data == password.SUCCESS_AUTH:
