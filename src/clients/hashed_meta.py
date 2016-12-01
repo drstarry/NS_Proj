@@ -1,7 +1,6 @@
 #!/usr/bin/python2.7
 
 from datetime import datetime
-from socket import socket, AF_INET, SOCK_STREAM
 from hashlib import sha1
 
 from base import BaseClient

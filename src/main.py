@@ -6,6 +6,8 @@ from servers.basic import BasicServer
 from clients.basic import BasicClient
 from servers.hashed_meta import HashedMetaServer
 from clients.hashed_meta import HashedMetaClient
+from servers.timeout import TimeoutServer
+from clients.timeout import TimeoutClient
 
 
 # main "method" that kicks off various routines
@@ -25,17 +27,23 @@ if __name__ == "__main__":
         if actor_type == "basic":
             print "Basic Server",
             actor = BasicServer()
-        if actor_type == "hashed_meta":
+        elif actor_type == "hashed_meta":
             print "Hashed Meta Server",
             actor = HashedMetaServer()
+        elif actor_type == "timeout":
+            print "Timeout Server",
+            actor = TimeoutServer()
 
     elif actor_str == "client":
         if actor_type == "basic":
             print "Basic Client",
             actor = BasicClient()
-        if actor_type == "hashed_meta":
+        elif actor_type == "hashed_meta":
             print "Hashed Meta Client",
             actor = HashedMetaClient()
+        elif actor_type == "timeout":
+            print "Timeout Client",
+            actor = TimeoutClient()
 
     if not actor:
         print "Bad arguments given"
