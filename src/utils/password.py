@@ -19,7 +19,6 @@ def get_count(l, comb):
     result = 0
     for n in range(1, comb+1):
         for sub_char_set in itertools.combinations(char_set, n):
-            print sub_char_set
             char_n = sum(sub_char_set)
             for m in range(n, 0, -1):
                 sign = (-1) ** (n - m)
