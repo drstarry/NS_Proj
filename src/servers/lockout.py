@@ -29,9 +29,13 @@ class LockoutServer(BaseServer):
             received_username = data[1]
             received_password = data[2]
 
-            # exponentially growing delay depending on the number of attempts
-            # to access an account
-            # delay = 0.01 * (2 ^ number attempts) seconds
+            # keep track of the number of attempts a user has made to log in
+            # NOTE: in practice, this counter would need to get reset after
+            # some amount of time
+            # NOTE: the work-around to this prevention method is that the
+            # attacker keeps the password fixed and tries logging in for many
+            # different users. in this case we would probably want to try and
+            # keep track of the source ip or something.
             if received_username in attempts:
                 attempts[received_username] += 1
             else:

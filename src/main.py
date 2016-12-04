@@ -10,6 +10,8 @@ from servers.timeout import TimeoutServer
 from clients.timeout import TimeoutClient
 from servers.lockout import LockoutServer
 from clients.lockout import LockoutClient
+from servers.challenge import ChallengeServer
+from clients.challenge import ChallengeClient
 
 
 # main "method" that kicks off various routines
@@ -38,6 +40,9 @@ if __name__ == "__main__":
         elif actor_type == "lockout":
             print "Lockout Server",
             actor = LockoutServer()
+        elif actor_type == "challenge":
+            print "Challenge Server",
+            actor = ChallengeServer()
 
     elif actor_str == "client":
         if actor_type == "basic":
@@ -52,6 +57,9 @@ if __name__ == "__main__":
         elif actor_type == "lockout":
             print "Lockout Client",
             actor = LockoutClient()
+        elif actor_type == "challenge":
+            print "Challenge Client",
+            actor = ChallengeClient()
 
     if not actor:
         print "Bad arguments given"

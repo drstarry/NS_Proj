@@ -7,7 +7,7 @@ from utils import password
 from utils import sockets
 
 
-class TimeoutClient(BaseClient):
+class ChallengeClient(BaseClient):
     def Client(self, sckt, bruteforce_file):
         """
         sckt = socket: the socket used to communicate
@@ -25,8 +25,15 @@ class TimeoutClient(BaseClient):
 
                 # [source ip address, username, password]
                 # sfisherhi's password is #5 in the password dictionary file
-                guess_data = ["10.0.1.3", "jporter1j", password_guess]
+                guess_data = ["10.0.1.3", "sfisherhi", password_guess]
                 sckt.sendData(guess_data)
+                data = sckt.receiveRequest()
+
+                # human interaction is necessary here, which is why we're simply
+                # sending back the wrong answer, because if the challenge is
+                # correctly structured, a bot would never get this right
+                sckt.sendData("wrong challenge")
+
                 data = sckt.receiveRequest()
                 if data == password.SUCCESS_AUTH:
                     success = True
@@ -36,6 +43,7 @@ class TimeoutClient(BaseClient):
                 if time_run.seconds > max_seconds_run:
                     success = False
                     break  # timed out
+                    
 
         time_taken = datetime.now() - start_time
         return success, time_taken, attempts
