@@ -70,6 +70,6 @@ def bruteforce_with_meta(name, year, month, day):
 
 if __name__ == '__main__':
     # lowercase, uppercase, numbers, special characters
-    comb, min_dig, max_dig = 2, 6, 6
+    comb, min_dig, max_dig = 2, 7, 7
     n = enumeration(comb, min_dig, max_dig)
     print n, comb, min_dig, max_dig
