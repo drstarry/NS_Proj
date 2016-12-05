@@ -16,6 +16,7 @@ class LockoutClient(BaseClient):
         success = False
         start_time = datetime.now()
         attempts = 0
+        max_seconds_run = 5 * 60 # 5 minutes
 
         with open(bruteforce_file, "r") as f:
             for line in f.readlines():
@@ -30,6 +31,11 @@ class LockoutClient(BaseClient):
                 if data == password.SUCCESS_AUTH:
                     success = True
                     break  # found a successful password!
+
+                time_run = datetime.now() - start_time
+                if time_run.seconds > max_seconds_run:
+                    success = False
+                    break  # timed out
 
         time_taken = datetime.now() - start_time
         return success, time_taken, attempts
