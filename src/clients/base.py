@@ -31,8 +31,8 @@ class BaseClient:
         else:
             print "Failure! Tried to get in but couldn't."
 
-        print "Took %d guesses and %d microseconds." \
-            % (attempts, time_taken.microseconds)
+        print "Took %d guesses and %d seconds." \
+            % (attempts, time_taken.seconds)
 
         serverSckt.shutdown(1)  # send close signal to server socket
         serverSckt.close()  # close connection
