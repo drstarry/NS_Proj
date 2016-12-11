@@ -27,8 +27,8 @@ def password_strength():
     y = []
     for _c in c:
         _y = []
-        for l in range(10):
-            _y.append(enumeration(_c, 10, 10))
+        for l in range(6, 10):
+            _y.append(enumeration(_c, l, l))
         y.append(tuple(_y))
     plt.xlabel('Number of character sets contained')
     plt.ylabel('Number of guesses needed to crack')
